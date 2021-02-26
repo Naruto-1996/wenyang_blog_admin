@@ -1,0 +1,2 @@
+class BannerIntroduce < ApplicationRecord
+end

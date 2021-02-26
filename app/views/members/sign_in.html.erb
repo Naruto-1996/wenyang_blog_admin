@@ -1,18 +1,18 @@
-<canvas id="space" class="space">
+<canvas id="space" class="space"></canvas>
 
-</canvas>
+
 <div class="login-container">
   <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
       <h3 style="color: #FFFFFF">欢迎来到登录页</h3>
-        <%= form_tag("/members/login_with_password", method: "post", class: "m-t" , role: "form" ) do %>
+        <%= form_tag("/members/login_with_password", method: "post", class: "m-t" , role: "form" , id: "form-submit" )  do %>
         <div class="form-group">
-          <input class="form-control" placeholder="用户名" required="">
+          <input class="form-control" name="member[account]" placeholder="用户名" required="">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="密码" required="">
+          <input type="password" name="member[password]" class="form-control" placeholder="密码" required="">
         </div>
-        <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
+        <button type="submit" class="btn btn-primary block full-width m-b" id="submit-login">登录</button>
 
         <a href="#"><small>忘记密码?</small></a>
           <% end %>
@@ -44,7 +44,37 @@
 </style>
 
 <script>
-    //based on an Example by @curran
+
+    $('#submit-login').click(function(){
+        var valuesToSubmit = $('#form-submit').serialize();
+        console.log(valuesToSubmit);
+        $.ajax({
+            type: "POST",
+            url: $('#form-submit').attr('action'), //sumbits it to the given url of the form
+            data: valuesToSubmit,
+            dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+        }).success(function(json){
+            //act on result.
+            if (json.code === 400){
+                showErrorToast(json.errorMessage)
+            }else {
+                window.location.href = json.redirectTo;
+            }
+        });
+        return false; // prevents normal behaviour
+    });
+
+    // 错误消息弹窗
+   function showErrorToast(errorMessage) {
+        // Display a success toast, with a title
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+        };
+        toastr.error(errorMessage, '错误提示!')
+    }
+
+    //星空背景----开始
     window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})();
     var canvas = document.getElementById("space");
     var c = canvas.getContext("2d");
@@ -133,6 +163,7 @@
     // });
 
     executeFrame();
+    // 星空背景结束
 </script>
 
 

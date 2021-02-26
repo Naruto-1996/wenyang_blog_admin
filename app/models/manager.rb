@@ -1,2 +1,4 @@
-class Manager < ApplicationRecord
+class Manager < ActiveRecord::Base
+
+
 end
