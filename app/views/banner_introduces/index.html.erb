@@ -1,0 +1,47 @@
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Banner部分个人介绍 </h5>
+          <div class="ibox-tools">
+            <%= link_to raw("<i class='fa fa-plus'></i>  新增"), new_banner_introduce_path,  class: "btn btn-primary btn-sm"%>
+          </div>
+        </div>
+        <div class="ibox-content">
+
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>#ID</th>
+              <th>大标题</th>
+              <th>小标题</th>
+              <th>个人描述</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @introduces.each do |introduce| %>
+            <tr>
+              <td><%= introduce.id %></td>
+              <td class="text-navy"><%= introduce.title %></td>
+              <td class="text-warning"><%= introduce.little_title %></td>
+              <td class="text-success"><%= introduce.description %></td>
+              <td>
+                <%= link_to raw("<i class='fa fa-info-circle'></i> 查看"), banner_introduce_path(introduce),  class: "btn btn-default btn-xs"%>
+                <%= link_to raw("<i class='fa fa-edit'></i> 编辑"), edit_banner_introduce_path(introduce),  class: "btn btn-success btn-xs"%>
+                <%= link_to raw("<i class='fa fa-trash-o'></i> 删除"), banner_introduce_path(introduce),  method: :delete, data: { confirm: "确定删除吗?" }, class: "btn btn-danger btn-xs" %>
+              </td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
