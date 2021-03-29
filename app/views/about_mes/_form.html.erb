@@ -1,0 +1,68 @@
+<%= form_with(model: about_me, local: true, html: {class: "form-horizontal"}) do |form| %>
+ 
+
+  <div class="form-group">
+    <%= form.label :生日, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :birthday, class: "form-control", placeholder: "请输入生日" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :毕业于, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :graduated_from, class: "form-control", placeholder: "请输入毕业院校" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :网站, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :website, class: "form-control", placeholder: "请输入个人网站地址" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :爱好, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :hobby, class: "form-control", placeholder: "请输入爱好" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :地址, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :address, class: "form-control", placeholder: "请输入地址" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :标题, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :title, class: "form-control", placeholder: "请输入标题" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= form.label :描述, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_area :description, class: "form-control", rows: "5", placeholder: "请输入个人描述" %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+      <div class="col-sm-4 col-sm-offset-2">
+        <%= link_to raw("<i class='fa fa-arrow-left'></i> 返回"), about_mes_path, class: "btn btn-default btn-sm" %>
+        <%= button_tag(:class => "btn btn-primary btn-sm") do %>
+          <i class="fa fa-check"></i> 提交
+        <% end %>
+      </div>
+  </div>
+<% end %>

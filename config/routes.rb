@@ -1,5 +1,6 @@
 Myapp::Application.routes.draw do
 
+  resources :about_mes
   # You can have the root of your site routed with "root"
   # root to: 'dashboards#dashboard_1'
 
@@ -8,6 +9,8 @@ Myapp::Application.routes.draw do
   # All routes
   get 'welcome/welcome'
   post 'members/login_with_password'
+  get 'application/logout'
+  resources :banner_introduces
 
   get "dashboards/dashboard_1"
   get "dashboards/dashboard_2"
